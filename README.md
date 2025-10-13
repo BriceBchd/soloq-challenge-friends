@@ -76,6 +76,22 @@ docker-compose up --build
 docker-compose up -d --build
 ```
 
+#### Démarrage en mode développement
+- Backend
+```bash
+cd server
+npm install
+npm run dev
+```
+
+- Frontend
+```bash
+cd client/client
+npm install
+npm start
+```
+
+
 ### 5. Accès à l'application
 
 - **Frontend**: http://localhost:4243
