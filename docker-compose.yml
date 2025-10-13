@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Serveur Node.js
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: soloq-server
+    ports:
+      - "4242:4242"
+    environment:
+      - NODE_ENV=production
+      - PORT=4242
+      # Ajoutez votre clé API Riot ici ou utilisez un fichier .env
+      - RIOT_API_KEY=${RIOT_API_KEY}
+    volumes:
+      # Mount du fichier .env pour les variables d'environnement
+      - ./server/.env:/app/.env:ro
+    restart: unless-stopped
+    networks:
+      - soloq-network
+
+  # Client React
+  client:
+    build: 
+      context: ./client/client
+      dockerfile: Dockerfile
+    container_name: soloq-client
+    ports:
+      - "4243:80"
+    depends_on:
+      - server
+    restart: unless-stopped
+    networks:
+      - soloq-network
+
+networks:
+  soloq-network:
+    driver: bridge
+
+volumes:
+  server_data:

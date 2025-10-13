@@ -1,0 +1,84 @@
+.summoner-list {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.summoner-list h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.summoner-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summoner-card {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.summoner-card:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.summoner-card.selected {
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.summoner-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.summoner-tag {
+  opacity: 0.7;
+  font-weight: normal;
+}
+
+.summoner-status {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.summoner-rank {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rank-display-mini {
+  font-size: 0.85rem;
+  color: #ffd700;
+  font-weight: 500;
+}
+
+.loading-rank {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* Pour les rangs non classés */
+.rank-display-mini:contains('Non classé') {
+  color: #888;
+  font-style: italic;
+}

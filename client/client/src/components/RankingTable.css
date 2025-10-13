@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+.ranking-table {
+  background: linear-gradient(135deg, rgba(200, 170, 113, 0.1) 0%, rgba(0, 150, 255, 0.05) 100%);
+  border: 2px solid rgba(200, 170, 113, 0.3);
+  border-radius: 0;
+  padding: 2rem;
+  backdrop-filter: blur(15px);
+  width: 100%;
+  max-width: 1400px; /* Augmenté de 1200px à 1400px */
+  margin: 0 auto;
+  font-family: 'Orbitron', monospace;
+  position: relative;
+  clip-path: polygon(20px 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+}
+
+.ranking-table::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 170, 113, 0.8), transparent);
+  box-shadow: 0 0 10px rgba(200, 170, 113, 0.5);
+}
+
+.ranking-table h2 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: 'Orbitron', monospace;
+  background: linear-gradient(135deg, #c9aa71 0%, #f0e6d2 50%, #c8aa6e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(200, 170, 113, 0.3);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(30, 39, 97, 0.2) 100%);
+  border: 1px solid rgba(200, 170, 113, 0.2);
+  position: relative;
+}
+
+.table-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 49%, rgba(200, 170, 113, 0.1) 50%, transparent 51%);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.ranking-table-content {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px; /* Augmenté de 880px à 1200px */
+  position: relative;
+  z-index: 1;
+}
+
+.ranking-table-content th {
+  background: linear-gradient(135deg, rgba(200, 170, 113, 0.2) 0%, rgba(240, 230, 210, 0.1) 100%);
+  padding: 1.5rem 0.75rem;
+  text-align: center;
+  font-weight: 900;
+  font-family: 'Orbitron', monospace;
+  color: #c9aa71;
+  border-bottom: 3px solid rgba(200, 170, 113, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.ranking-table-content th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 170, 113, 0.8), transparent);
+  box-shadow: 0 0 5px rgba(200, 170, 113, 0.3);
+}
+
+.ranking-table-content td {
+  padding: 1.5rem 0.75rem;
+  border-bottom: 1px solid rgba(200, 170, 113, 0.1);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, transparent 100%);
+}
+
+.summoner-row {
+  position: relative;
+}
+
+/* Colonnes spécifiques - Largeurs augmentées */
+.rank-col { width: 80px; text-align: center; }
+.pseudo-col { width: 220px; text-align: center; } /* Augmenté de 160px à 220px */
+.summoner-col { width: 280px; text-align: center; } /* Augmenté de 200px à 280px */
+.tier-col { width: 240px; text-align: center; } /* Augmenté de 160px à 240px */
+.lp-col { width: 120px; text-align: center; } /* Augmenté de 100px à 120px */
+.winrate-col { width: 200px; text-align: center; } /* Gardé à 200px */
+.profile-col { width: 140px; text-align: center; } /* Augmenté de 120px à 140px */
+
+/* Cellules spécifiques */
+.rank-cell {
+  text-align: center;
+}
+
+.position {
+  background: linear-gradient(135deg, rgba(200, 170, 113, 0.3) 0%, rgba(240, 230, 210, 0.2) 100%);
+  border: 2px solid rgba(200, 170, 113, 0.5);
+  border-radius: 0;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-family: 'Orbitron', monospace;
+  color: #c9aa71;
+  font-size: 1.1rem;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  box-shadow: 0 0 15px rgba(200, 170, 113, 0.2);
+}
+
+.summoner-cell {
+  text-align: center;
+}
+
+.summoner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.summoner-name {
+  font-weight: 700;
+  font-family: 'Orbitron', monospace;
+  color: #f0e6d2;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.summoner-tag {
+  font-size: 0.85rem;
+  color: #c8aa6e;
+  opacity: 0.8;
+  font-family: 'Orbitron', monospace;
+}
+
+.tier-cell {
+  text-align: center;
+}
+
+.rank-display {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.rank-emoji {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px rgba(200, 170, 113, 0.3));
+}
+
+.rank-text {
+  font-weight: 700;
+  font-family: 'Orbitron', monospace;
+  color: #f0e6d2;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.lp-cell {
+  text-align: center;
+}
+
+.lp-value {
+  background: linear-gradient(135deg, rgba(200, 170, 113, 0.3) 0%, rgba(240, 230, 210, 0.2) 100%);
+  border: 1px solid rgba(200, 170, 113, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  color: #c9aa71;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.winrate-cell {
+  text-align: center;
+}
+
+.winrate-value {
+  font-size: 0.95rem;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  color: #f0e6d2;
+  letter-spacing: 0.5px;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.wins {
+  color: #22c55e; /* Vert pour les victoires */
+  font-weight: 700;
+}
+
+.losses {
+  color: #ef4444; /* Rouge pour les défaites */
+  font-weight: 700;
+}
+
+.winrate-percentage {
+  color: #f0e6d2; /* Couleur normale pour le pourcentage */
+  margin-left: 0.5rem;
+}
+
+.profile-cell {
+  text-align: center;
+}
+
+.dpm-link {
+  background: linear-gradient(135deg, rgba(0, 150, 255, 0.8) 0%, rgba(30, 39, 97, 0.9) 100%);
+  color: #f0e6d2;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Orbitron', monospace;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 2px solid rgba(0, 150, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.dpm-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.dpm-link:hover {
+  background: linear-gradient(135deg, rgba(0, 150, 255, 1) 0%, rgba(30, 39, 97, 1) 100%);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 25px rgba(0, 150, 255, 0.3),
+    0 0 20px rgba(0, 150, 255, 0.2);
+  border-color: rgba(0, 150, 255, 0.6);
+  text-decoration: none;
+  color: #f0e6d2;
+}
+
+.dpm-link:hover::before {
+  left: 100%;
+}
+
+.dpm-link:visited {
+  color: #f0e6d2;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.6rem;
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  color: #c9aa71;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.pseudo-cell {
+  text-align: center;
+}
+
+.pseudo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.pseudo-name {
+  font-weight: 600;
+  font-family: 'Orbitron', monospace;
+  color: #ffffff; /* Texte blanc plus clair */
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  background: #7289da; /* Couleur Discord officielle */
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px; /* Border-radius plus proche de Discord */
+  border: 1px solid rgba(114, 137, 218, 0.8); /* Bordure assortie */
+  box-shadow: 0 2px 8px rgba(114, 137, 218, 0.4);
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+
+@media (max-width: 768px) {
+  .ranking-table {
+    padding: 1.5rem;
+    clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);
+    max-width: none; /* Permettre le scroll horizontal sur mobile */
+  }
+  
+  .ranking-table h2 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  .ranking-table-content th,
+  .ranking-table-content td {
+    padding: 1rem 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .rank-emoji {
+    font-size: 1.5rem;
+  }
+  
+  .dpm-link {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+  
+  .position {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .pseudo-name {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .summoner-name {
+    font-size: 1rem;
+  }
+  
+  .rank-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .lp-col, .lp-cell {
+    display: none;
+  }
+  
+  .ranking-table-content {
+    min-width: 900px; /* Gardé plus large pour éviter le retour à la ligne */
+  }
+  
+  .ranking-table h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+}

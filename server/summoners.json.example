@@ -1,0 +1,12 @@
+[
+    {
+        "pseudo": "ExemplePseudoDiscord",
+        "name": "ExempleNomInvocateur",
+        "tag": "EUW1"
+    },
+    {
+        "pseudo": "AutrePseudo",
+        "name": "AutreNom",
+        "tag": "EUW1"
+    }
+]
