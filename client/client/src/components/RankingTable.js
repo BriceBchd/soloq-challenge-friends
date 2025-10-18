@@ -161,6 +161,47 @@ const RankingTable = ({ summoners, apiBaseUrl }) => {
     return rankB - rankA; // Tri décroissant (meilleur rang en premier)
   });
 
+    // Fonction pour calculer les scores par équipe
+  const calculateTeamScores = useCallback(() => {
+    const teamScores = {
+      blue: 0,
+      red: 0
+    };
+
+    summoners.forEach(summoner => {
+      const rankedInfo = rankedData[summoner.puuid];
+      if (rankedInfo && summoner.team && summoner.coeff) {
+        const wins = rankedInfo.wins || 0;
+        const score = wins * summoner.coeff;
+        teamScores[summoner.team] += score;
+      }
+    });
+
+    return teamScores;
+  }, [summoners, rankedData]);
+
+  // Calculer les scores
+  const teamScores = calculateTeamScores();
+
+  // Composant pour afficher les scores d'équipe
+  const TeamScoresDisplay = () => (
+    <div className="team-scores">
+      <div className="scores-container">
+        <div className="team-score blue-score">
+          <span className="team-icon">🔵</span>
+          <span className="team-name">BLUE TEAM</span>
+          <span className="score-value">{teamScores.blue.toFixed(1)}</span>
+        </div>
+        <div className="vs-separator">VS</div>
+        <div className="team-score red-score">
+          <span className="team-icon">🔴</span>
+          <span className="team-name">RED TEAM</span>
+          <span className="score-value">{teamScores.red.toFixed(1)}</span>
+        </div>
+      </div>
+    </div>
+  );
+
   if (loading && Object.keys(rankedData).length === 0) {
     return <div className="loading">Chargement du classement...</div>;
   }
@@ -186,6 +227,9 @@ const RankingTable = ({ summoners, apiBaseUrl }) => {
           </button>
         )}
       </div>
+
+      {/* Affichage des scores d'équipe */}
+      <TeamScoresDisplay />
       
       <div className="table-container">
         <table className="ranking-table-content">
@@ -207,6 +251,7 @@ const RankingTable = ({ summoners, apiBaseUrl }) => {
               const rank = formatRank(rankedInfo);
               const dpmLink = getDpmLink(summoner.name, summoner.tag);
               const isLoading = loading && !rankedInfo;
+              const playerScore = rankedInfo && summoner.coeff ? (rankedInfo.wins || 0) * summoner.coeff : 0;
               
               return (
                 <tr key={summoner.puuid} className="summoner-row">
