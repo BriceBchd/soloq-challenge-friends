@@ -35,11 +35,12 @@ export async function getSummonerByName() {
                 name: summonerUID.gameName, 
                 tag: summonerUID.tagLine, 
                 puuid: summonerUID.puuid,
-                pseudo: summoner.pseudo
+                pseudo: summoner.pseudo,
+                team: summoner.team
             });
 
             // Optionally, add puuid to summoners.json if not already present
-            await addPuuidToSummoners(summoner.gameName, summoner.tagLine, summonerUID.puuid, summoner.pseudo);
+            await addPuuidToSummoners(summoner.gameName, summoner.tagLine, summonerUID.puuid, summoner.pseudo, summoner.team);
         }
         
         return summonersListUID;

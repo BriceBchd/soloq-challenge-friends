@@ -193,6 +193,7 @@ const RankingTable = ({ summoners, apiBaseUrl }) => {
             <tr>
               <th className="rank-col">#</th>
               <th className="pseudo-col">Discord</th>
+              <th className="team-col">Team</th>
               <th className="summoner-col">Invocateur</th>
               <th className="tier-col">Rang</th>
               <th className="lp-col">LP</th>
@@ -219,6 +220,16 @@ const RankingTable = ({ summoners, apiBaseUrl }) => {
                         {summoner.pseudo || 'N/A'}
                       </span>
                     </div>
+                  </td>
+
+                  <td className="team-cell">
+                    {summoner.team ? (
+                      <span className={`team-badge ${summoner.team}`}>
+                        {summoner.team === 'blue' ? '🔵 BLUE' : '🔴 RED'}
+                      </span>
+                    ) : (
+                      <span className="no-team">-</span>
+                    )}
                   </td>
                   
                   <td className="summoner-cell">

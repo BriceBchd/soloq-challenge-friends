@@ -2,11 +2,13 @@
     {
         "pseudo": "ExemplePseudoDiscord",
         "name": "ExempleNomInvocateur",
-        "tag": "EUW1"
+        "tag": "EUW1",
+        "team": "blue"
     },
     {
         "pseudo": "AutrePseudo",
         "name": "AutreNom",
-        "tag": "EUW1"
+        "tag": "EUW1",
+        "team": "red"
     }
 ]
